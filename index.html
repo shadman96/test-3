@@ -12,17 +12,28 @@
     <link rel="stylesheet" href="covid-19.css">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>COVID-19</title>
 </head>
 <body>
     <header class="header-navbar" id="header-navbar">
         <a href="" class="nav-logo">COVID-19</a>
-        <ul>
-            <li><a href="">سەرەتا</a></li>
-            <li><a href="">دەربارە</a></li>
-            <li><a href="">پرسیار</a></li>
-            <li><a href="">پەیوەندی</a></li>
-        </ul>
+        <div id="toggle"></div>
+        <div id="sidebar">
+            <ul>
+                <li><a href="">سەرەتا</a></li>
+                <li><a href="">دەربارە</a></li>
+                <li><a href="">پرسیار</a></li>
+                <li><a href="">پەیوەندی</a></li>
+            </ul>
+        </div>
+        <div class="main-nav">
+            <ul>
+                <li><a href="">سەرەتا</a></li>
+                <li><a href="">دەربارە</a></li>
+                <li><a href="">پرسیار</a></li>
+                <li><a href="">پەیوەندی</a></li>
+            </ul>
+        </div>
     </header>
     <section class="section1">
         <div class="sect-1-content text-center pt-4">
@@ -365,6 +376,20 @@
         var header = document.getElementById("header-navbar");
         header.classList.toggle("sticky", window.scrollY > 0);
     })
+    const toggle = document.getElementById('toggle');
+    const sidebar = document.getElementById('sidebar');
+
+    document.onclick = function(e){
+        if(e.target.id !== 'sidebar' && e.target.id !== 'toggle'){
+            toggle.classList.remove('active');
+            sidebar.classList.remove('active');
+        }
+    }
+
+    toggle.onclick = function (){
+        toggle.classList.toggle('active');
+        sidebar.classList.toggle('active');
+    }
 </script>
 </body>
 </html>

@@ -15,35 +15,106 @@ body{
     align-items: center;
     transition: .6s;
     background-color: #EFF6FF;
-    padding: 15px 45px;
+    padding: 15px 40px;
     z-index: 1000000;
 }
 .header-navbar.sticky{
     position: fixed;
-    padding: 5px 45px;
-    background-color: #000;
+    padding: 17px 45px;
+    background-color: #FF4202;
 }
 .header-navbar .nav-logo{
     position: relative;
     text-decoration: none;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     letter-spacing: 2px;
     color: #4E73B9;
     transition: .6s;
+    margin-top: 10px;
 }
-.header-navbar ul{
+#toggle{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #154366;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#toggle::before{
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    background: #EFF6FF;
+    transform: translateY(-5px);
+    transition: .2s;
+}
+#toggle::after{
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 2px;
+    background: #EFF6FF;
+    transform: translateY(5px);
+    transition: .2s;
+}
+#toggle.active::before{
+    transform: translateY(0px);
+    transform: rotate(45deg);
+}
+#toggle.active::after{
+    transform: translateY(0px);
+    transform: rotate(-45deg);
+}
+#sidebar{
+    position: fixed;
+    left: -300px;
+    top: 0;
+    width: 300px;
+    height: 100vh;
+    background-color: #4E73B9;
+    transition: .5s;
+}
+#sidebar.active{
+    left: 0;
+}
+#sidebar ul{
+    position: relative;
+    margin-top: 50px;
+    padding: 0 !important;
+}
+#sidebar ul li{
+    list-style: none;
+    display: inline-block;
+    width: 100%;
+    padding: 25px 40px;
+}
+#sidebar ul li:hover{
+    background-color: #6f92bc;
+}
+#sidebar ul li a{
+    color: #EFF6FF;
+    text-decoration: none;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+.header-navbar .main-nav ul{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 18px;
+    margin-top: 16px;
 }
-.header-navbar ul li{
+.header-navbar .main-nav ul li{
     position: relative;
     list-style: none;
 }
-.header-navbar ul li a{
+.header-navbar .main-nav ul li a{
     position: relative;
     margin: 0 15px;
     color: #382D15;
@@ -51,19 +122,24 @@ body{
     letter-spacing: 2px;
     font-weight: 500;
 }
-.header-navbar ul li a:hover{text-decoration: underline;}
+.header-navbar .main-nav ul li a:hover{text-decoration: underline;}
 .header-navbar.sticky .nav-logo,
-.header-navbar.sticky ul li a{
+.header-navbar.sticky .main-nav ul li a{
     color: #fff;
 }
 @media only screen and (max-width : 768px){
     .header-navbar .nav-logo{
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1.3rem;
+        margin-top: 6px;
     }
-    .header-navbar ul li a{
-        margin: 0 7px;
-        letter-spacing: .5px;
+    .header-navbar .main-nav ul{
+        display: none;
+    }
+}
+@media only screen and (min-width : 768px){
+    #toggle{
+        display: none;
     }
 }
 .section1{
@@ -129,6 +205,18 @@ body{
 .section3 figure figcaption{
     color: #154366;
 }
+@media only screen and (max-width : 768px){
+    .section3 .col img{
+        min-width: 90px;
+        height: 140px;
+    }
+}
+@media only screen and (max-width : 600px){
+    .section3 .col img{
+        min-width: 80px;
+        height: 130px;
+    }
+}
 .section4{
     min-height: 100%;
     width: 100%;
@@ -136,6 +224,7 @@ body{
 }
 .sect-4-header{
     color: #4B627A;
+    font-size: 34px;
 }
 .section4 .box-container{
     display: flex;
@@ -176,6 +265,7 @@ body{
 }
 .sect-5-header{
     color: #4B627A;
+    font-size: 34px;
 }
 .section5 .doctor-box{
     width: 250px;
@@ -222,6 +312,7 @@ body{
 }
 .sect-6-header{
     color: #4B627A;
+    font-size: 34px;
 }
 .section6 .col-lg-4 img{
     height: 500px;
@@ -230,7 +321,18 @@ body{
     min-width: 135px;
     height: 175px;
 }
-
+@media only screen and (max-width : 768px){
+    .section6 .col img{
+        min-width: 90px;
+        height: 140px;
+    }
+}
+@media only screen and (max-width : 600px){
+    .section6 .col img{
+        min-width: 80px;
+        height: 130px;
+    }
+}
 footer{
     padding: 10px 0;
     background-color: transparent;
@@ -238,7 +340,7 @@ footer{
 footer .social-medias i{
     color: #154366;
     font-size: 25px;
-    padding: 0 20px;
+    padding: 0 15px;
 }
 footer .social-medias i:hover{
     color: #FF4202;
